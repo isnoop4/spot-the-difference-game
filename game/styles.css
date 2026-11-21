@@ -1,0 +1,136 @@
+/* Twin Lanterns — dark lantern-lit styling, system fonts only, no network. */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #171226;
+  color: #f3ead8;
+  font-family: Georgia, 'Times New Roman', serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.top {
+  width: 100%;
+  max-width: 1240px;
+  padding: 12px 20px 4px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px 24px;
+}
+.brand h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: 2px;
+  color: #ffd166;
+  text-shadow: 0 0 18px rgba(255, 209, 102, .45);
+}
+.brand .tag { margin: 2px 0 0; font-size: 13px; color: #c9b8e8; font-style: italic; }
+.hud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  align-items: center;
+  font-family: Verdana, Geneva, sans-serif;
+}
+.hud-block { display: flex; flex-direction: column; min-width: 64px; }
+.hud-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #a99bc7; }
+.hud-value { font-size: 19px; font-weight: bold; color: #fff; }
+.remaining .hud-value { color: #ff8a7a; }
+.dots { display: flex; gap: 4px; margin-top: 3px; }
+.dots i {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #4a3f6b; display: inline-block;
+}
+.dots i.done { background: #7ee081; }
+.dots i.now { background: #ffd166; box-shadow: 0 0 8px #ffd166; }
+.timebar { width: 110px; height: 7px; background: #3a2f5c; border-radius: 4px; margin-top: 4px; overflow: hidden; }
+.timebar-fill { height: 100%; width: 100%; background: #ffd166; border-radius: 4px; }
+.timebar-fill.low { background: #ff5a4e; }
+.hud-buttons { display: flex; gap: 6px; flex-wrap: wrap; }
+button {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 13px;
+  background: #2c2350;
+  color: #f3ead8;
+  border: 1px solid #6b5a9e;
+  border-radius: 8px;
+  padding: 7px 11px;
+  cursor: pointer;
+}
+button:hover { background: #3d2f6e; }
+button.active { background: #ffd166; color: #241a3d; border-color: #ffd166; }
+button.big { font-size: 16px; padding: 10px 18px; margin: 6px 4px 0; }
+.stage {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 8px 12px 4px;
+  flex-wrap: wrap;
+}
+.panel { margin: 0; }
+.panel figcaption {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #c9b8e8;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.panel canvas {
+  display: block;
+  border: 3px solid #6b5a9e;
+  border-radius: 10px;
+  background: #0e0a1a;
+  cursor: crosshair;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, .5);
+}
+#lens {
+  position: absolute;
+  width: 200px; height: 200px;
+  border: 3px solid #ffd166;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 24px rgba(255, 209, 102, .55);
+  z-index: 5;
+}
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(12, 8, 26, .88);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10;
+  padding: 20px;
+}
+.overlay[hidden] { display: none; }
+.card {
+  background: #241a3d;
+  border: 2px solid #6b5a9e;
+  border-radius: 14px;
+  max-width: 620px;
+  width: 100%;
+  padding: 26px 30px;
+  text-align: center;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, .6);
+}
+.card h2 { margin: 0 0 8px; color: #ffd166; font-size: 34px; letter-spacing: 2px; }
+.card .intro { font-size: 16px; line-height: 1.5; color: #e8ddf5; }
+.scene-list { display: flex; flex-direction: column; gap: 8px; margin: 18px 0; }
+.scene-list button {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 15px; padding: 11px 16px; text-align: left;
+}
+.scene-list button .stars { color: #ffd166; letter-spacing: 2px; }
+.card .help { font-size: 13px; line-height: 1.6; color: #b7a8d8; }
+.end-score { font-size: 20px; font-weight: bold; color: #7ee081; }
+.foot {
+  padding: 10px 20px 16px;
+  font-size: 13px;
+  font-style: italic;
+  color: #a99bc7;
+  text-align: center;
+  max-width: 1240px;
+}

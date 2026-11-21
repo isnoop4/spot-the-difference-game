@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twin Lanterns — Spot the Difference</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1>Twin Lanterns</h1>
+    <p class="tag">Spot the Difference &middot; 5 scenes &middot; 40 differences</p>
+  </div>
+  <div class="hud" id="hud">
+    <div class="hud-block scene-block">
+      <span class="hud-label">Scene</span>
+      <span class="hud-value" id="sceneName">Harbour Dawn</span>
+      <span class="dots" id="levelDots" aria-label="scene progress"></span>
+    </div>
+    <div class="hud-block">
+      <span class="hud-label">Found</span>
+      <span class="hud-value" id="foundCount">0 / 8</span>
+    </div>
+    <div class="hud-block remaining">
+      <span class="hud-label">Remaining</span>
+      <span class="hud-value" id="remainingCount">8</span>
+    </div>
+    <div class="hud-block timer-block">
+      <span class="hud-label">Time</span>
+      <span class="hud-value" id="timeText">2:30</span>
+      <div class="timebar"><div class="timebar-fill" id="timeFill"></div></div>
+    </div>
+    <div class="hud-block">
+      <span class="hud-label">Score</span>
+      <span class="hud-value" id="scoreText">0</span>
+    </div>
+    <div class="hud-block">
+      <span class="hud-label">Combo</span>
+      <span class="hud-value" id="comboText">&times;1</span>
+    </div>
+    <div class="hud-buttons">
+      <button id="hintBtn" type="button" title="Hint (H)">Hint <span id="hintsLeft">3</span></button>
+      <button id="lensBtn" type="button" title="Magnifier (M)">Lens</button>
+      <button id="soundBtn" type="button" title="Sound on/off">Sound</button>
+      <button id="restartBtn" type="button" title="Restart scene (R)">Restart</button>
+      <button id="menuBtn" type="button" title="Menu (Esc)">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main class="stage" id="stage">
+  <figure class="panel">
+    <figcaption>LEFT &mdash; the original</figcaption>
+    <canvas id="leftCanvas" width="560" height="420"></canvas>
+  </figure>
+  <figure class="panel">
+    <figcaption>RIGHT &mdash; find the changes</figcaption>
+    <canvas id="rightCanvas" width="560" height="420"></canvas>
+  </figure>
+  <canvas id="lens" width="200" height="200" hidden></canvas>
+</main>
+
+<div class="overlay" id="menuOverlay">
+  <div class="card">
+    <h2>Twin Lanterns</h2>
+    <p class="intro">Two pictures, nearly the same. Find every difference before
+    the lanterns burn down. Click a difference on either panel &mdash; or move
+    the crosshair with the arrow keys and press Enter.</p>
+    <div class="scene-list" id="sceneList"></div>
+    <p class="help">Mouse: click a difference &middot; Arrows: move crosshair &middot;
+    Enter/Space: check &middot; H: hint &middot; M: magnifier &middot; R: restart &middot;
+    1&ndash;5: pick a scene &middot; Wrong click costs 5 seconds.</p>
+  </div>
+</div>
+
+<div class="overlay" id="endOverlay" hidden>
+  <div class="card">
+    <h2 id="endTitle">Scene complete!</h2>
+    <p id="endText"></p>
+    <p class="end-score">Score: <span id="endScore">0</span></p>
+    <button id="nextBtn" type="button" class="big">Next scene</button>
+    <button id="againBtn" type="button" class="big">Play again</button>
+  </div>
+</div>
+
+<footer class="foot">
+  <span>Click a difference on either picture. Fair differences only: nothing hides
+  behind a pixel &mdash; study the scene and it gives itself away.</span>
+</footer>
+
+<script type="module" src="src/game.js"></script>
+</body>
+</html>
