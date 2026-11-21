@@ -49,3 +49,10 @@ writeFileSync(
     game_path_max_bytes: 1000,
   }),
 );
+
+// A dossier that was written but holds nothing is a silent failure: refuse
+// it here instead of handing the grader an empty summary.
+const dossierBytes = statSync(join(outputDir, 'dossier.json')).size;
+if (dossierBytes === 0) {
+  throw new Error('hand-in refused: dossier.json is empty');
+}
